@@ -8,6 +8,11 @@
 --dividerColor: #ACA7C3;
 --headerBgdColor: #FEFCFF;
 --bgdColor: #FFFFFF;
+--titleColor: #1C1B1F;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -34,4 +39,15 @@ h6 {
 
 p {
   margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%; 
+  height: auto; 
 }

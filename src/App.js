@@ -7,16 +7,19 @@ import './App.css';
 function App() {
 
   const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
+  const EventDetailsPage = lazy(() => import('./pages/EventDetailsPage/EventDetailsPage'))
+
 
   return (
     <>
     <Suspense fallback={<Loader />}>
         <Routes>
         <Route path="/" element={<Layout />}> 
-        <Route index element ={<Navigate to="MainPage"/>} />
-        <Route path="MainPage" element={<MainPage />} />
+        <Route index element ={<Navigate to="events"/>} />
+        <Route path="events" element={<MainPage />} />
+        <Route path="events/:eventId" element={<EventDetailsPage />}></Route>
+        <Route path="*" element={<MainPage />} />
        
-          
           </Route> 
         </Routes>
      </Suspense>
