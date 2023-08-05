@@ -1,47 +1,6 @@
 import styled from "@emotion/styled/macro";
 import { Link } from "react-router-dom";
 
-export const StyledLink = styled(Link)`
-  display: flex;
-  align-self: flex-end;
-  text-align: center;
-  justify-content: center;
-  display: none;
-  text-decoration: none;
-  diplay: block;
-  width: 66px;
-  height: 20px;
-  background-color: var(--accentColor);
-  padding: 10px;
-  font-family: poppins;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--bgdColor);
-  border: none;
-  border-radius: 8px;
- 
-
-
-  @media screen and (min-width: 768px) {
-    width: 114px;
-    height: 40px;
-  }
-
-  &:hover {
-    background-color: var(--btnHover);
-  }
-`;  
-
-export const DetailsBox = styled.div`
-  position: relative;
-  height: 312px;
-  width: 100%;
-
-  @media screen and (min-width: 768px) {
-    height: 336px;
-  }
-`;
 
 export const Wrapper = styled.div`
     width: 271px;
@@ -49,14 +8,6 @@ export const Wrapper = styled.div`
     border-radius: 12px;
     box-shadow: 2px 4px 9px rgba(166, 141, 174, 0.28);
     background-color: var(--bgdColor);
-
-    &:hover ${StyledLink} {
-      display: block;
-    }
-
-    &:hover ${DetailsBox} {
-      height: 280px;
-    }
 
   @media screen and (min-width: 768px) {
       width: 332px;
@@ -67,6 +18,15 @@ export const Wrapper = styled.div`
 }
 `;
 
+export const DetailsBox = styled.div`
+  position: relative;
+  height: 280px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    height: 336px;
+  }
+`;
 
 
 export const Img = styled.img`
@@ -160,3 +120,32 @@ export const Description = styled.p`
   margin-bottom: 16px;
 `;
 
+export const StyledLink = styled(Link)`
+  display: flex;
+  align-self: flex-end;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 66px;
+  height: 20px;
+  background-color: var(--accentColor);
+  padding: 10px;
+  font-family: poppins;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--bgdColor);
+  border: none;
+  border-radius: 8px;
+ 
+
+
+  @media screen and (min-width: 768px) {
+    width: 114px;
+    height: 40px;
+  }
+
+  &:hover {
+    background-color: var(--btnHover);
+  }
+`;  

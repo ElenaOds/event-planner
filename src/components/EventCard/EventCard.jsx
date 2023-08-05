@@ -22,8 +22,8 @@ const EventCard = ({ id, name, date, time, place, description, image, category, 
         </DetailsBox>
             <ContentWrapper>
                 <Title>{name}</Title>
-                <Description>{description.slice(0, 90)} {description.length > 90 && '...'}</Description>
-                <StyledLink key={id} id={id} to={`${id}`} state={{from: location}}>More info</StyledLink>
+                <Description>{description.slice(0, 90)} {description.length > 90 && '...'}</Description> 
+                <StyledLink to={`/event/${id}`} key={id} id={id} state={{from: location}}>More info</StyledLink>
             </ContentWrapper>
             
         </Wrapper>

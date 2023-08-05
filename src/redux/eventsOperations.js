@@ -13,7 +13,7 @@ export const getEvents = createAsyncThunk('events/get', async (thunkAPI) => {
     }
   });
 
-  export const createEvents = createAsyncThunk('events/create',
+  export const createEvent = createAsyncThunk('events/create',
     async (id, thunkAPI) => {
       try {
         const { data } = await createCard(id);
@@ -35,7 +35,7 @@ export const getEvents = createAsyncThunk('events/get', async (thunkAPI) => {
       }
     });
 
-    export const deleteEvents = createAsyncThunk('events/delete',
+    export const deleteEvent = createAsyncThunk('events/delete',
     async (id, thunkAPI) => {
       try {
         const { data } = await deleteCard(id);

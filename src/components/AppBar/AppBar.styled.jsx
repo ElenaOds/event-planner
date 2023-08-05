@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
     min-width: 320px;
+
     padding: 24px;
     display: flex;
     justify-content: space-between;
@@ -15,7 +17,7 @@ export const Wrapper = styled.div`
     }
 
     @media screen and (min-width: 1280px) {
-        padding: 60px 80px;
+        padding: 22px 80px 22px 80px;
     }
 `;
 
@@ -30,12 +32,13 @@ export const Box = styled.div`
     }
 `;
 
-export const Title = styled.h1`
+export const Title = styled(Link)`
     font-family: 'Alata';
     font-weight: 400;
     font-size: 24px;
     margin-bottom: 31px;
     color: var(--accentColor);
+    text-decoration: none;
 
     @media screen and (min-width: 768px) {
         margin-bottom: 0;

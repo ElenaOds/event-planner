@@ -15,5 +15,4 @@ justify-items: center;
   @media screen and (min-width: 1280px) {
     grid-template-columns: repeat(4, 1fr);
   }
-
-`
+`;

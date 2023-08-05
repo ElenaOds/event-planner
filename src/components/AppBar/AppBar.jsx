@@ -1,11 +1,13 @@
 import { Wrapper, Title, Selector, Box } from './AppBar.styled';
 import {SearchBox} from '../SearchBox/SearchBox';
+import { useLocation } from "react-router-dom";
 
 export const AppBar = () => {
+  const location = useLocation();
   return (
     <Wrapper>
       <Box>
-      <Title>Event Planner</Title>
+      <Title to={`/events`} state={{from: location}}>Event Planner</Title>
       <SearchBox />
       </Box>
       

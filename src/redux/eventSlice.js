@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getEvents, createEvents, updateEvents, deleteEvents} from './eventsOperations';
+import { getEvents, createEvent, updateEvents, deleteEvent} from './eventsOperations';
 
 const eventsSlice = createSlice({
     name: "events",
@@ -22,19 +22,19 @@ const eventsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         },
-
-        [createEvents.pending](state) {
+        [createEvent.pending](state) {
         state.isLoading = true;
         },
-        [createEvents.fulfilled](state, action) {
+        [createEvent.fulfilled](state, action) {
         state.isLoading = false;
         state.error = null;   
-        state.data.push(action.payload);;
+        state.data.push(action.payload);
         },
-        [createEvents.rejected](state, action) {
+        [createEvent.rejected](state, action) {
         state.isLoading = false;
         state.error = action.payload;
         },
+
         [updateEvents.pending](state) {
         state.isLoading = true;
         },
@@ -43,23 +43,24 @@ const eventsSlice = createSlice({
         state.error = null;   
         const index = state.data.findIndex(
           data => data.id === action.payload.id);
-          state.data.splice(index, 1, action.payload);
+          state.data.splice(index, 1);
         },
         [updateEvents.rejected](state, action) {
         state.isLoading = false;
         state.error = action.payload;
         },
-        [deleteEvents.pending](state) {
+        
+        [deleteEvent.pending](state) {
         state.isLoading = true;
         },
-        [deleteEvents.fulfilled](state, action) {
+        [deleteEvent.fulfilled](state, action) {
         state.isLoading = false;
         state.error = null;   
         const index = state.data.findIndex(
         data => data.id === action.payload.id);
         state.data.splice(index, 1);
         },
-        [deleteEvents.rejected](state, action) {
+        [deleteEvent.rejected](state, action) {
         state.isLoading = false;
         state.error = action.payload;
         },
