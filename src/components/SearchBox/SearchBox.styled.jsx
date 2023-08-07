@@ -4,7 +4,7 @@ import { ReactComponent as Cross } from '../../icons/cross.svg';
 
 export const Form = styled.div`
     position: relative;
-    max-width: 272px;
+    max-width: 480px;
     height: 48px;
     background-color: var(--bgdColor);
 

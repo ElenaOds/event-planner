@@ -1,48 +1,50 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import {  useSelector, useDispatch } from 'react-redux';
-import { Wrapper, Img, FilterBox, Category, Priority, Details, DetailsBox, DetailsInfo, Title, ContentWrapper, Description, StyledLink } from './EventDetails.styled';
+import { Section, Title, Wrapper, Img, DetailsBox, Description, DetailsInfo, DetailsList, Priority, StyledLink, BtnWrapper, Button } from './EventDetails.styled';
 import {deleteEvent} from '../../redux/eventsOperations';
+import { toast } from 'react-toastify';
 
 const EventDetails = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const location = useLocation();
     const { id } = useParams();
     const events = useSelector((state) => state.events.data);
     const event = events.find(event => event.id === id);
     const { name, date, time, place, description, image, category, priority } = event;
 
-
-    const formattedDate = new Date(date).toLocaleDateString('he-IL', { day:"numeric", month:"numeric" })
-    const formattedTime = new Date(time).toLocaleTimeString('he-IL', { hour:"numeric", minute:"numeric" })
+    const formattedDate = new Date(date).toLocaleDateString('dsb-DE', { day:"numeric", month:"numeric" })
+    const formattedTime = new Date(time).toLocaleTimeString('en-us', { hour:"numeric", minute:"numeric" })
 
     const handleDelete = () => {
          dispatch(deleteEvent({id}));
+         toast.success("Event is deleted");
+         navigate("/events", { replace: true });
     };
     
 return (
-    <Wrapper>    
-    <DetailsBox>
-        <Img src={image} alt={name}/>
-        <FilterBox>
-            <Category>{category}</Category>
-            <Priority>{priority}</Priority>
-        </FilterBox>
-        <Details>
-            <DetailsInfo>{formattedDate} at {formattedTime}</DetailsInfo>
-            <DetailsInfo>{place}</DetailsInfo>
-        </Details>
-    </DetailsBox>
-        <ContentWrapper>
-            <Title>{name}</Title>
-            <Description>{description}</Description>
-            <StyledLink to={`/event/${id}/edit`} key={id} id={id}  state={{from: location}}>Edit</StyledLink>
-            <button key={id }onClick={handleDelete}>Delete</button>
-        </ContentWrapper>
-        
-    </Wrapper>
-)
-  
 
+<Section>
+ <Title>{name}</Title>
+<Wrapper> 
+<Img src={image} alt={name}/>
+<DetailsBox>
+    <Description>{description}</Description>
+    <DetailsInfo>
+    <DetailsList>{category}</DetailsList>
+   <Priority>{priority}</Priority> 
+    <DetailsList>{place}</DetailsList>
+    <DetailsList>{formattedDate} at {formattedTime}</DetailsList>
+    </DetailsInfo>
+    
+    <BtnWrapper>
+        <StyledLink to={`/event/${id}/edit`} key={id} id={id} state={{from: location}}>Edit</StyledLink>
+        <Button onClick={handleDelete}>Delete</Button>
+    </BtnWrapper>
+</DetailsBox>
+</Wrapper> 
+</Section>
+)
 }
 
 export default EventDetails;

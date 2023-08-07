@@ -1,16 +1,10 @@
 import styled from "@emotion/styled/macro";
 import { Link } from "react-router-dom";
 import { ReactComponent as Arrow } from "../../icons/arrow-left.svg";
-import bgd_image from '../../images/bgd_image.jpg';
+
 
 
 export const Wrapper = styled.div`
-    background-image: url(${bgd_image});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100vw;
-    height: 100vh;
     padding: 42px 24px;
 
     @media screen and (min-width: 768px) {
@@ -48,4 +42,3 @@ export const StyledLink = styled(Link)`
         margin-bottom: 17px;
     }
 `;
-

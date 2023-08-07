@@ -1,14 +1,11 @@
 import styled from '@emotion/styled';
 import { Link } from "react-router-dom";
 
-export const Wrapper = styled.div`
+export const HeaderWrapper = styled.div`
     min-width: 320px;
-
     padding: 24px;
     display: flex;
-    justify-content: space-between;
-   
-   
+    flex-direction: column;
     border-bottom: 1px solid var(--accentColor);
     background-color: var(--headerBgdColor);
 
@@ -23,29 +20,27 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
        
     @media screen and (min-width: 768px) {
-        flex-direction: row;
-        align-items: center;
-        // margin-right: 24px;
+        margin-bottom: 0;
     }
+`;
+
+
+export const Wrapper = styled.div`
+    display: flex;
 `;
 
 export const Title = styled(Link)`
     font-family: 'Alata';
     font-weight: 400;
     font-size: 24px;
-    margin-bottom: 31px;
     color: var(--accentColor);
     text-decoration: none;
-
-    @media screen and (min-width: 768px) {
-        margin-bottom: 0;
-        margin-right: 80px;
-    }
 `;
-
 
 export const Selector = styled.select`
     display: grid;
@@ -66,6 +61,10 @@ export const Selector = styled.select`
     }
     &:focus {
         outline: none;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-left: 24px;
     }
 `;
 

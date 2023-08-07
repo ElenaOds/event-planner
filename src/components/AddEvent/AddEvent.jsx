@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { createEvent } from '../../redux/eventsOperations';
+import { toast } from 'react-toastify';
+import DatePicker from "react-datepicker";
+import {Section, Title, Form} from './AddEvent.styled';
 
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddEvent = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
@@ -26,10 +32,6 @@ const AddEvent = () => {
             setDescription(value);
             break;
 
-        case 'date':
-            setDate(value);
-            break;
-
         case 'time':
             setTime(value);
             break;
@@ -41,10 +43,6 @@ const AddEvent = () => {
         case 'category':
             setCategory(value);
             break;
-            
-        case 'image':
-            setImage(value);
-            break;
 
         case 'priority':
             setPriority(value);
@@ -53,6 +51,11 @@ const AddEvent = () => {
             default:
               return;
         }
+      };
+
+      const handleChangeImage = e => {
+        const fileUploaded = e.target.files[0];
+        setImage(URL.createObjectURL(fileUploaded));
       };
 
       const handleSubmit = e => {
@@ -69,25 +72,14 @@ const AddEvent = () => {
         };
       
         dispatch(createEvent(newEvent));
-        reset();  
-      } 
+        toast.success("Event is created");
+        navigate(`/events`, { replace: true });
+        }
  
-      const reset = () => {
-        setName('');
-        setDescription('');
-        setDate('');
-        setTime('');
-        setLocation('');
-        setCategory('');
-        setImage('');
-        setPriority('');
-      };
-
-
     return (
-      <div>
-        <h2>Create new event</h2>
-        <form onSubmit={handleSubmit}>
+      <Section>
+        <Title>Create new event</Title>
+        <Form onSubmit={handleSubmit}>
           <label htmlFor="name">Title</label>
             <input
             id='name'
@@ -115,14 +107,14 @@ const AddEvent = () => {
             />
           
           <label htmlFor="date">Select date</label>
-            <input
-            id="date"
-            type="date"
-            name="date" 
-            required
-            value={date}
-            onChange={handleChange}
+          <div>
+            <DatePicker
+            selected={date}
+            onChange={setDate}
+            dateFormat='dd/MM/yyyy'
             />
+          </div>
+      
           
           <label htmlFor="time">Select time</label>
             <input
@@ -147,7 +139,10 @@ const AddEvent = () => {
           
 
           <label htmlFor="category">Category</label>
-          <select id="category" name="category" defaultValue={'DEFAULT'}>
+          <select id="category" name="category" 
+            defaultValue={"DEFAULT"}
+            value={category.option}
+            onChange={handleChange}>
             <option value="DEFAULT" disabled>Choose a category</option>
             <option value="art">Art</option>
             <option value="music">Music</option>
@@ -155,37 +150,40 @@ const AddEvent = () => {
             <option value="conference">Conference</option>
             <option value="workshop">Workshop</option>
             <option value="party">Party</option>
-            <option value="sport">Sport</option>
-            value={category}
-            onChange={handleChange}
+            <option value="sport">Sport</option> 
           </select>
           
           <label htmlFor="image">Add picture</label>
+          <img
+              src={image}
+              alt={name}
+            />
             <input
+            multiple 
             id="image"
             type="file"
             name="image"
             placeholder="Add picture"
-            accept="image/png, image/jpeg, image/jpg"
-            value={image}
-            onChange={handleChange}
+            accept="image/png, image/gif, image/jpeg, image/jpg"
+            onChange={handleChangeImage}
             />
           
-
           <label htmlFor="priority">Priority</label>
-          <select id="priority" name="priority" defaultValue={'DEFAULT'}>
+          <select id="priority" name="priority" 
+            defaultValue={'DEFAULT'}
+            value={priority.option}
+            onChange={handleChange}>
             <option value="DEFAULT" disabled>Choose a priority</option>
             <option value="hight">High</option>
             <option value="medium">Medium</option>
             <option value="low">Low</option>
-            value={priority}
-            onChange={handleChange}
+            
           </select>
 
           <button type="submit">Add Event</button>
-        </form>
+        </Form>
        
-        </div>
+        </Section>
     );
 };
 

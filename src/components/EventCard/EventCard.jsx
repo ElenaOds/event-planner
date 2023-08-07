@@ -4,8 +4,8 @@ import { useLocation } from "react-router-dom";
 const EventCard = ({ id, name, date, time, place, description, image, category, priority}) => {
     const location = useLocation();
 
-    const formattedDate = new Date(date).toLocaleDateString('he-IL', { day:"numeric", month:"numeric" })
-    const formattedTime = new Date(time).toLocaleTimeString('he-IL', { hour:"numeric", minute:"numeric" })
+    const formattedDate = new Date(date).toLocaleDateString('dsb-DE', { day:"numeric", month:"numeric" })
+    const formattedTime = new Date(time).toLocaleTimeString('dsb-DE', { hour:"numeric", minute:"numeric" })
     
     return (
         <Wrapper>    

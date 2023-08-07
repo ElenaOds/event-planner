@@ -12,11 +12,10 @@ const EventDetailsPage = () => {
              <StyledLink to={backLinkHref}>
             <ArrowLeft aria-label="Back"/>
             Back</StyledLink> 
-      
+     
         <Suspense fallback={null}>
         <Outlet />
         </Suspense>  
-    
         </Wrapper>
     )
 }

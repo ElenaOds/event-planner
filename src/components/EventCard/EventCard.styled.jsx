@@ -9,8 +9,8 @@ export const StyledLink = styled(Link)`
   display: none;
   text-decoration: none;
   diplay: block;
-  width: 66px;
-  height: 20px;
+  width: 114px;
+  height: 40px;
   background-color: var(--accentColor);
   padding: 10px;
   font-family: poppins;
@@ -20,13 +20,6 @@ export const StyledLink = styled(Link)`
   color: var(--bgdColor);
   border: none;
   border-radius: 8px;
- 
-
-
-  @media screen and (min-width: 768px) {
-    width: 114px;
-    height: 40px;
-  }
 
   &:hover {
     background-color: var(--btnHover);
@@ -43,7 +36,7 @@ export const DetailsBox = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.li`
     width: 271px;
     height: 480px;
     border-radius: 12px;
@@ -101,7 +94,7 @@ export const Priority = styled.p`
     border-radius: 8px;
     font-family: poppins;
     font-weight: 500;
-    forn-size: 14px;
+    font-size: 14px;
     ${(props) => {
         switch (props.priority) {
           case 'high':
