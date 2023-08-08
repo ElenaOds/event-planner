@@ -58,5 +58,5 @@ export const StyledCross = styled(Cross)`
     right: 12px;
     margin: 0;
     stroke: var(--accentColor);
-    // display: none;
+    display: none;
 `;

@@ -6,14 +6,18 @@ const EventCard = ({ id, name, date, time, place, description, image, category, 
 
     const formattedDate = new Date(date).toLocaleDateString('dsb-DE', { day:"numeric", month:"numeric" })
     const formattedTime = new Date(time).toLocaleTimeString('dsb-DE', { hour:"numeric", minute:"numeric" })
+    const capitalizedValue = value => value.charAt(0).toUpperCase() + value.slice(1);
+
+     
     
     return (
         <Wrapper>    
         <DetailsBox>
             <Img src={image} alt={name}/>
             <FilterBox>
-                <Category>{category}</Category>
-                <Priority>{priority}</Priority>
+                <Category>{capitalizedValue(category)}</Category>
+                <Priority style={{ color: priority === "High" ? "#FF2B77" : priority === "Medium" ? "#E2A300" : priority === "Low" ? "#6BD475" : null}}>
+                    {capitalizedValue(priority)}</Priority>
             </FilterBox>
             <Details>
                 <DetailsInfo>{formattedDate} at {formattedTime}</DetailsInfo>

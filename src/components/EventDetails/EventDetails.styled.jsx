@@ -149,6 +149,7 @@ export const StyledLink = styled(Link)`
   color: var(--accentColor);
   border: 1px solid var(--accentColor);
   border-radius: 8px;
+  display: none;
  
   @media screen and (min-width: 768px) {
     width: 55px;

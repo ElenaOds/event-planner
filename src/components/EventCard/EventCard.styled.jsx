@@ -95,18 +95,6 @@ export const Priority = styled.p`
     font-family: poppins;
     font-weight: 500;
     font-size: 14px;
-    ${(props) => {
-        switch (props.priority) {
-          case 'high':
-            return 'color: var((--highColor));'
-          case 'medium':
-            return 'color: var(--mediumColor);'
-          case 'low':
-            return 'color: var(--lowColor);'
-          default:
-            return 'color: var(--lowColor);'
-        }
-      }}
 `;
 
 export const Details = styled.div`
