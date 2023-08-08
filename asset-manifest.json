@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/event-planner/static/css/main.6ccf3bb6.css",
-    "main.js": "/event-planner/static/js/main.bff34cae.js",
+    "main.css": "/event-planner/static/css/main.5e78eaeb.css",
+    "main.js": "/event-planner/static/js/main.4e1f1923.js",
     "static/js/971.d85314c0.chunk.js": "/event-planner/static/js/971.d85314c0.chunk.js",
     "static/js/854.156b4e7d.chunk.js": "/event-planner/static/js/854.156b4e7d.chunk.js",
     "static/media/bgd_image.jpg": "/event-planner/static/media/bgd_image.9ec48850da0410ca04b0.jpg",
@@ -10,14 +10,13 @@
     "static/media/plus.svg": "/event-planner/static/media/plus.411ae7577a630cefb5f77552397af7a9.svg",
     "static/media/arrow-left.svg": "/event-planner/static/media/arrow-left.ca52cea2cdd89acdb6ba75630148982e.svg",
     "static/media/cross.svg": "/event-planner/static/media/cross.8ed7d50be9b6e52848c57464e87f94b7.svg",
-    "static/media/chevron-down.svg": "/event-planner/static/media/chevron-down.da51d1ee04444d32c10a4dd0c6d9f341.svg",
-    "main.6ccf3bb6.css.map": "/event-planner/static/css/main.6ccf3bb6.css.map",
-    "main.bff34cae.js.map": "/event-planner/static/js/main.bff34cae.js.map",
+    "main.5e78eaeb.css.map": "/event-planner/static/css/main.5e78eaeb.css.map",
+    "main.4e1f1923.js.map": "/event-planner/static/js/main.4e1f1923.js.map",
     "971.d85314c0.chunk.js.map": "/event-planner/static/js/971.d85314c0.chunk.js.map",
     "854.156b4e7d.chunk.js.map": "/event-planner/static/js/854.156b4e7d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ccf3bb6.css",
-    "static/js/main.bff34cae.js"
+    "static/css/main.5e78eaeb.css",
+    "static/js/main.4e1f1923.js"
   ]
 }
