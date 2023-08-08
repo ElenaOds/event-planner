@@ -1,5 +1,6 @@
 import styled from "@emotion/styled/macro";
 
+
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -172,6 +173,7 @@ export const Label = styled.label`
         font-size: 16px;
         line-height: 24px;
         color: var(--textColor);
+        outline: none;
 
       &:invalid {
             margin-bottom: 0;
@@ -223,6 +225,7 @@ export const Button = styled.button`
   width: 240px;
   height: 56px;
   background-color: var(--accentColor);
+  border: none;
   padding: 16px;
   font-family: poppins;
   font-weight: 500;
@@ -249,3 +252,6 @@ export const Button = styled.button`
   margin-top: 60px;
  }
 `;
+
+
+

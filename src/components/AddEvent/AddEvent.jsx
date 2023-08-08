@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { createEvent } from '../../redux/eventsOperations';
 import { toast } from 'react-toastify';
-import { Section, Title, Form, Label,  Button, FormWrapper  } from './AddEvent.styled';
+import { Section, Title, Form, Label,  Button, FormWrapper } from './AddEvent.styled';
 
 const AddEvent = () => {
   const dispatch = useDispatch();
@@ -102,7 +102,10 @@ const handleChangeImage = e => {
             onBlur={() => setTouched(true)}
           />
           )}
+          
           {touched ? <p>Please enter 5 - 30 characters. Only letters are accepted</p> : null}
+        
+        
         </Label>
         
         <Label htmlFor="description"><span>Description</span>
@@ -123,7 +126,6 @@ const handleChangeImage = e => {
             id="date"
             type="date"
             name="date" 
-            required
             value={date}
             onChange={handleChange}
           />
@@ -133,7 +135,6 @@ const handleChangeImage = e => {
             id="time"
             type="time"
             name="time" 
-            required
             value={time}
             onChange={handleChange}
           />
