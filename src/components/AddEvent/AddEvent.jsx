@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { createEvent } from '../../redux/eventsOperations';
@@ -17,6 +17,7 @@ const AddEvent = () => {
   const [image, setImage] = useState('');
   const [priority, setPriority] = useState('');
   const [touched, setTouched] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
  
  const handleChange = e => {
@@ -73,13 +74,24 @@ const handleChangeImage = e => {
       image,
       priority
     };
-      
+
     dispatch(createEvent(newEvent));
     toast.success("Event is created");
     navigate(`/events`, { replace: true });
   }
 
+  useEffect(() => {
+    if (name.length > 5 && description.length > 1) {
+        setDisabled(false);
+    }
+    else {
+      setDisabled(true);
+    }
+ }, [name, description]);
+
+
   return (
+
     <Section>
       <Title>Create new event</Title>
       <Form onSubmit={handleSubmit}>
@@ -156,6 +168,7 @@ const handleChangeImage = e => {
           placeholder="Location"
           value={location}
           onChange={handleChange}
+          onBlur={() => setTouched(true)}
           />
           )}
            {touched ? <p>Please type location. Only letters are allowed</p>: null}
@@ -182,10 +195,7 @@ const handleChangeImage = e => {
           </Label>
 
           <Label htmlFor="image"><span>Add image</span>
-          <img
-              src={image}
-              alt={name}
-            />
+          <img src={image} alt={name}/>
             <input
             multiple 
             id="image"
@@ -214,7 +224,7 @@ const handleChangeImage = e => {
           <p>Please choose an option</p>
           </Label>
 
-          <Button type="submit">Add Event</Button>
+          <Button type="submit" disabled={disabled}>Add Event</Button>
           </FormWrapper>
 
         

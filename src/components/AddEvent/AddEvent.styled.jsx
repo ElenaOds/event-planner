@@ -240,6 +240,11 @@ export const Button = styled.button`
   color: var(--bgdColor);
 }
 
+&:disabled {
+  background-color: var(--dividerColor);
+  cursor: not-allowed;
+}
+
 @media screen and (min-width: 768px) {
   grid-row-start: 6;
   grid-column-start: 2;
