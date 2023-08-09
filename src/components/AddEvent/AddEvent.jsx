@@ -14,7 +14,7 @@ const AddEvent = () => {
   const [time, setTime] = useState('');
   const [location, setLocation] = useState('');
   const [category, setCategory] = useState('');
-  const [image, setImage] = useState('');
+  // const [image, setImage] = useState('');
   const [priority, setPriority] = useState('');
   const [touched, setTouched] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -57,10 +57,10 @@ const AddEvent = () => {
   }
 };
 
-const handleChangeImage = e => {
-  const fileUploaded = e.target.files[0];
-  setImage(URL.createObjectURL(fileUploaded));
-};
+// const handleChangeImage = e => {
+//   const fileUploaded = e.target.files[0];
+//   setImage(URL.createObjectURL(fileUploaded));
+// };
 
   const handleSubmit = e => {
     e.preventDefault(); 
@@ -71,7 +71,6 @@ const handleChangeImage = e => {
       time,
       location,
       category,
-      image,
       priority
     };
 
@@ -195,15 +194,16 @@ const handleChangeImage = e => {
           </Label>
 
           <Label htmlFor="image"><span>Add image</span>
-          <img src={image} alt={name}/>
+          {/* <img src={image} alt={name}/> */}
             <input
-            multiple 
-            id="image"
-            type="file"
-            name="image"
-            placeholder="Add picture"
-            accept="image/png, image/gif, image/jpeg, image/jpg"
-            onChange={handleChangeImage}
+            disabled
+            // multiple 
+            // id="image"
+            // type="file"
+            // name="image"
+            // placeholder="Add picture"
+            // accept="image/png, image/gif, image/jpeg, image/jpg"
+            // onChange={handleChangeImage}
             />
             </Label>
           
