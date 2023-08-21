@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import {SearchBox} from '../SearchBox/SearchBox';
+import { SearchBox } from '../SearchBox/SearchBox';
 import { HeaderWrapper, Wrapper, Title, Selector, Box } from './AppBar.styled';
 
 export const AppBar = () => {
@@ -17,8 +17,7 @@ export const AppBar = () => {
   });
 
   return (
-    <HeaderWrapper>
-       
+    <HeaderWrapper>     
     
     {isTablet ? ( 
        <Box>

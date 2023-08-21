@@ -55,7 +55,7 @@ export const Selector = styled.select`
     border: none;
     position: relative;
     box-shadow: 2px 4px 9px rgba(166, 141, 174, 0.28); 
-    display: none;
+  
     
     &.active {
         outline: none;

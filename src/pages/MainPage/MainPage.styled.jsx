@@ -36,7 +36,7 @@ export const BtnWrapper = styled.div`
 `;
 
 
-export const Title = styled.h2`
+export const Title = styled.h1`
     font-family: Poppins;
     font-weight: 600;
     font-size: 32px;

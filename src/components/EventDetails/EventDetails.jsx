@@ -1,8 +1,10 @@
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import {  useSelector, useDispatch } from 'react-redux';
-import { Section, Title, Wrapper, Img, DetailsBox, Description, DetailsInfo, DetailsList, Priority, StyledLink, BtnWrapper, Button } from './EventDetails.styled';
-import {deleteEvent} from '../../redux/eventsOperations';
 import { toast } from 'react-toastify';
+import {deleteEvent} from '../../redux/eventsOperations';
+import { Section, Title, Wrapper, Img, DetailsBox, Description, DetailsInfo, DetailsList, Priority, StyledLink, BtnWrapper, Button } from './EventDetails.styled';
+
+
 
 const EventDetails = () => {
     const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const EventDetails = () => {
     const { name, date, time, place, description, image, category, priority } = event;
 
     const formattedDate = new Date(date).toLocaleDateString('dsb-DE', { day:"numeric", month:"numeric" })
-    const formattedTime = new Date(time).toLocaleTimeString('en-us', { hour:"numeric", minute:"numeric" })
+    const formattedTime = new Date(time).toLocaleTimeString('en-US', { hour:"numeric", minute:"numeric" })
 
     const handleDelete = () => {
          dispatch(deleteEvent({id}));
@@ -46,5 +48,7 @@ return (
 </Section>
 )
 }
+
+
 
 export default EventDetails;

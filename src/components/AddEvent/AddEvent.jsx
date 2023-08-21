@@ -1,8 +1,8 @@
 import { useState, useEffect  } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { createEvent } from '../../redux/eventsOperations';
 import { toast } from 'react-toastify';
+import { createEvent } from '../../redux/eventsOperations';
 import { Section, Title, Form, Label,  Button, FormWrapper } from './AddEvent.styled';
 
 const AddEvent = () => {
@@ -12,7 +12,7 @@ const AddEvent = () => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [location, setLocation] = useState('');
+  const [place, setPlace] = useState('');
   const [category, setCategory] = useState('');
   // const [image, setImage] = useState('');
   const [priority, setPriority] = useState('');
@@ -40,8 +40,8 @@ const AddEvent = () => {
         setTime(value);
         break;
 
-      case 'location':
-        setLocation(value);
+      case 'place':
+        setPlace(value);
         break;
 
       case 'category':
@@ -69,7 +69,7 @@ const AddEvent = () => {
       description,
       date,
       time,
-      location,
+      place,
       category,
       priority
     };
@@ -86,7 +86,7 @@ const AddEvent = () => {
     else {
       setDisabled(true);
     }
- }, [name, description]);
+ }, [name, description, place]);
 
 
   return (
@@ -151,7 +151,7 @@ const AddEvent = () => {
           />
         </Label>
        
-          <Label htmlFor="location"><span>Location</span>
+          <Label htmlFor="place"><span>Location</span>
            {touched ? (
             <input
             minLength="3" 
@@ -161,11 +161,11 @@ const AddEvent = () => {
             />
            ) : (
           <input
-          id="location"
+          id="place"
           type="text"
-          name="location" 
+          name="place" 
           placeholder="Location"
-          value={location}
+          value={place}
           onChange={handleChange}
           onBlur={() => setTouched(true)}
           />

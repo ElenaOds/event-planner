@@ -1,5 +1,6 @@
-import { Wrapper, Img, FilterBox, Category, Priority, Details, DetailsBox, DetailsInfo, Title, ContentWrapper, Description, StyledLink } from './EventCard.styled';
 import { useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { Wrapper, Img, FilterBox, Category, Priority, Details, DetailsBox, DetailsInfo, Title, ContentWrapper, Description, StyledLink } from './EventCard.styled';
 
 const EventCard = ({ id, name, date, time, place, description, image, category, priority}) => {
     const location = useLocation();
@@ -32,6 +33,18 @@ const EventCard = ({ id, name, date, time, place, description, image, category, 
             
         </Wrapper>
     )
+}
+
+EventCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    priority: PropTypes.string.isRequired,
+    place: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 }
 
 export default EventCard;

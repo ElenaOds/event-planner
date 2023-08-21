@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Wrapper, Title, StyledLink, BtnWrapper, BtnText, BtnContainer, ListWrapper } from './MainPage.styled';
 import EventList from '../../components/EventsList/EventsList';
 import { ReactComponent as PlusIcon} from '../../icons/plus.svg'
+import { Wrapper, Title, StyledLink, BtnWrapper, BtnText, BtnContainer, ListWrapper } from './MainPage.styled';
 
 const MainPage = () => {
   const location = useLocation();
