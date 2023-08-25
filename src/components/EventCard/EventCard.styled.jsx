@@ -36,7 +36,7 @@ export const DetailsBox = styled.div`
   }
 `;
 
-export const Wrapper = styled.li`
+export const Wrapper = styled.div`
     width: 271px;
     height: 480px;
     border-radius: 12px;
