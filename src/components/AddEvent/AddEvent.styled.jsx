@@ -1,4 +1,5 @@
 import styled from "@emotion/styled/macro";
+import { Form, Field } from 'formik';
 
 
 export const Section = styled.section`
@@ -34,59 +35,66 @@ export const Title = styled.h1`
     }
 `;
 
-export const Form = styled.form`
+// export const Form = styled.form`
+//     padding: 40px 16px;
+//     width: 272px;
+//     border-radius: 8px;
+//     box-shadow: 2px 4px 9px rgba(166, 141, 174, 0.28);
+//     background-color: var(--bgdColor);
+    
+//   @media screen and (min-width: 768px) {
+//       padding: 40px 24px;
+//       width: 688px;
+//   }
+
+//   @media screen and (min-width: 1280px) {
+//     width: 1280px;
+// }
+
+// `;
+export const StyledForm = styled(Form)`
+    display: flex;
+    flex-direction: column;
+    justufy-content: center;
     padding: 40px 16px;
     width: 272px;
     border-radius: 8px;
     box-shadow: 2px 4px 9px rgba(166, 141, 174, 0.28);
     background-color: var(--bgdColor);
-    
-  @media screen and (min-width: 768px) {
-      padding: 40px 24px;
-      width: 688px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
-}
-
-`;
-export const FormWrapper = styled.div `
-    display: flex;
-    flex-direction: column;
-    justufy-content: center;
 
   @media screen and (min-width: 768px) {
     display: grid;   
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0 24px;
     justify-content: center;
+    padding: 40px 24px;
+    width: 688px;
 
-    & > :nth-child(2) {
+    & > :nth-of-type(2) {
       grid-row: span 2;
       grid-column-start: 1;
     }
 
-    & > :nth-child(5) {
+    & > :nth-of-type(5) {
       grid-column-start: 2;
       grid-row-start: 1;
     }
 
-    & > :nth-child(6) {
+    & > :nth-of-type(6) {
       grid-column-start: 2;
       grid-row-start: 2;
     }
 
-    & > :nth-child(7) {
+    & > :nth-of-type(7) {
       grid-column-start: 2;
       grid-row-start: 3;
     }
-    & > :nth-child(8) {
+    & > :nth-of-type(8) {
       grid-column-start: 2;
       grid-row-start: 4;
     }
 
-    & > :nth-child(10) {
+    & > :nth-of-type(10) {
       grid-column-start: 2;
       grid-row-start: 4;
     }
@@ -97,36 +105,36 @@ export const FormWrapper = styled.div `
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0 42px;
     align-content: center;
+    width: 1280px;
      
 
-    & > :nth-child(3) {
+    & > :nth-of-type(3) {
       grid-column-start: 2;
       grid-row-start: 1;
     }
 
-    & > :nth-child(4) {
+    & > :nth-of-type(4) {
       grid-column-start: 2;
       grid-row-start: 2;
     }
 
-    & > :nth-child(5) {
+    & > :nth-of-type(5) {
       grid-column-start: 2;
       grid-row-start: 3;
     }
-    & > :nth-child(6) {
+    & > :nth-of-type(6) {
       grid-column-start: 3;
       grid-row-start: 1;
     }
-    & > :nth-child(7) {
+    & > :nth-of-type(7) {
       grid-column-start: 3;
       grid-row-start: 2;
     }
-    & > :nth-child(8) {
+    & > :nth-of-type(8) {
       grid-column-start: 3;
       grid-row-start: 3;
     }
   }
-}
 `;
 
 export const Label = styled.label`
@@ -152,71 +160,84 @@ export const Label = styled.label`
     margin-bottom: 8px;
     }
 
-    & > p {
-       font-family: poppins;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 16px;
-        color: var(--highColor);
-        text-align: right;
-        display: none;
-    }
+    // & > p {
+    //    font-family: poppins;
+    //     font-weight: 400;
+    //     font-size: 12px;
+    //     line-height: 16px;
+    //     color: var(--highColor);
+    //     text-align: right;
+    //     display: none;
+    // }
 
-    & > input,
-    & > textarea {
-        margin-bottom: 20px;
-        padding: 16px 12px;
-        border-radius: 8px;
-        border: 1px solid var(--dividerColor);
-        font-family: poppins;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        color: var(--textColor);
-        outline: none;
+    // & > input,
+    // & > textarea {
+    //     margin-bottom: 20px;
+    //     padding: 16px 12px;
+    //     border-radius: 8px;
+    //     border: 1px solid var(--dividerColor);
+    //     font-family: poppins;
+    //     font-weight: 400;
+    //     font-size: 16px;
+    //     line-height: 24px;
+    //     color: var(--textColor);
+    //     outline: none;
 
-      &:invalid {
-            margin-bottom: 0;
-            border: 1px solid var(--highColor);
-        }
-      }
+      // &:invalid {
+      //       margin-bottom: 0;
+      //       border: 1px solid var(--highColor);
+      //   }
+      // }
       
 
-     & > input:invalid ~ p,
-     & > textarea:invalid ~ p {
-         display: block;
-     }
+    //  & > input:invalid ~ p,
+    //  & > textarea:invalid ~ p {
+    //      display: block;
+    //  }
 
-    & > select {
-        margin-bottom: 20px;
-        padding: 16px 12px;
-        border-radius: 8px;
-        border: 1px solid var(--dividerColor);
-        font-family: poppins;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 24px;
-          color: var(--textColor);
+    // & > select {
+    //     margin-bottom: 20px;
+    //     padding: 16px 12px;
+    //     border-radius: 8px;
+    //     border: 1px solid var(--dividerColor);
+    //     font-family: poppins;
+    //       font-weight: 400;
+    //       font-size: 16px;
+    //       line-height: 24px;
+    //       color: var(--textColor);
 
-        & > option {
-          font-family: poppins;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 24px;
-          color: var(--textColor);
-        }
-    } 
+    //     & > option {
+    //       font-family: poppins;
+    //       font-weight: 400;
+    //       font-size: 16px;
+    //       line-height: 24px;
+    //       color: var(--textColor);
+    //     }
+    // } 
 
-    & > input::placeholder,
-    & > textarea::placeholder {
-      font-family: poppins;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
-      color: var(--dividerColor);
-    }
+    // & > input::placeholder,
+    // & > textarea::placeholder {
+    //   font-family: poppins;
+    //   font-weight: 400;
+    //   font-size: 16px;
+    //   line-height: 24px;
+    //   color: var(--dividerColor);
+    // }
     
 `;
+
+export const StyledField = styled(Field)`
+  margin-bottom: 4px;
+  padding: 16px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--dividerColor);
+  font-family: poppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--textColor);
+  outline: none;
+`
 
 export const Button = styled.button`
   display: block;

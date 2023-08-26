@@ -1,14 +1,17 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { createEvent } from '../../redux/eventsOperations';
+import { Section, Title, StyledForm, Label, StyledField } from './AddEvent.styled';
+
+const format = '[A-Za-zА-Яа-яЁёІіЇїЄє/s]+';
 
 const schema = yup.object({
-  name: yup.string().min(3, 'Title should not be shorter than 3 characters').max(25, 'Title should not be longer than 25 characters').required('Please type a title'),
+  name: yup.string().matches(format, 'Only letters are allowed').min(3, 'Title should not be shorter than 3 characters').max(25, 'Title should not be longer than 25 characters').required('Please type a title'),
   description: yup.string().min(3, 'Description should not be shorter than 3 characters').max(80, 'Description should not be longer than 80 characters').required('Please type description'),
-  place: yup.string().min(3, 'Location name should not be shorter than 3 characters').max(15, 'Location name should not be longer than 15 characters').required("Please type location"),
+  place: yup.string().matches(format, 'Only letters are allowed').min(3, 'Location name should not be shorter than 3 characters').max(15, 'Location name should not be longer than 15 characters').required("Please type location"),
   category: yup.mixed().oneOf(['art', 'music', 'business', 'conference', 'workshop', 'party', 'sport'], 'Please select category').required(),
   priority: yup.mixed().oneOf(['high', 'medium', 'low'], 'Please select priority').required(),
   date: yup.date().required('Please select date'),
@@ -29,69 +32,71 @@ const initialValues = {
 
 const AddEvent = () => {
   const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
 
 const handleSubmit = (values, {resetForm}) => {
   console.log(values);
  
-
 dispatch(createEvent(values));
 toast.success("Event is created");
-    navigate(`/events`, { replace: true });
-  resetForm();
+navigate(`/events`, { replace: true });
+resetForm();
 }
  
 return (
+  <Section>
+    <Title>Create new event</Title>
   <Formik 
   initialValues={initialValues} 
   validationSchema={schema}
   onSubmit={handleSubmit}>
-    <Form autoComplete="off">
-      <label htmlFor="name"><span>Title</span>
-      <Field
+    <StyledForm autoComplete="off">
+      <Label htmlFor="name"><span>Title</span>
+      <StyledField
         type="text"
         name="name" 
         placeholder="Title"
       />
       <ErrorMessage name="name" component="div"/>
-      </label>
+      </Label>
 
-      <label htmlFor="description"><span>Description</span>
-      <Field as="textarea"
+      <Label htmlFor="description"><span>Description</span>
+      <StyledField as="textarea"
         name="description" 
         placeholder="Description"
       />
       <ErrorMessage name="description" component="div"/>
-      </label>
+      </Label>
 
-      <label htmlFor="date"><span>Select date</span>
-      <Field
+      <Label htmlFor="date"><span>Select date</span>
+      <StyledField
         type="date"
         name="date" 
         placeholder="select date"
       />
       <ErrorMessage name="date" component="div"/>
-      </label>
+      </Label>
 
-      <label htmlFor="time"><span>Select time</span>
-      <Field
+      <Label htmlFor="time"><span>Select time</span>
+      <StyledField
         type="time"
         name="time" 
       />
       <ErrorMessage name="time" component="div"/>
-      </label>
+      </Label>
   
-      <label htmlFor="place"><span>Location</span>
-      <Field
+      <Label htmlFor="place"><span>Location</span>
+      <StyledField
         type="text"
         name="place" 
         placeholder="Location"
       />
       <ErrorMessage name="place" component="div"/>
-      </label>
+      </Label>
 
-      <label htmlFor="category"><span>Category</span>
-      <Field as="select" name="category">
+      <Label htmlFor="category"><span>Category</span>
+      <StyledField as="select" name="category">
       <option value="DEFAULT" disabled>Choose a category</option>
         <option value="art">Art</option>
         <option value="music">Music</option>
@@ -100,12 +105,12 @@ return (
         <option value="workshop">Workshop</option>
         <option value="party">Party</option>
         <option value="sport">Sport</option> 
-      </Field>
+      </StyledField>
       <ErrorMessage name="category" component="div"/>
-      </label>
+      </Label>
 
-     <label htmlFor="image"><span>Add picture</span>
-      <Field
+     <Label htmlFor="image"><span>Add picture</span>
+      <StyledField
         multiple 
         type="file"
         name="image" 
@@ -113,21 +118,22 @@ return (
         accept="image/png, image/gif, image/jpeg, image/jpg"
       />
       <ErrorMessage name="image" component="div"/>
-      </label>
+      </Label>
 
-      <label htmlFor="priority"><span>Priority</span>
-      <Field as="select" name="priority">
+      <Label htmlFor="priority"><span>Priority</span>
+      <StyledField as="select" name="priority">
       <option value="DEFAULT" disabled>Choose a priority</option>
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
-      </Field>
+      </StyledField>
       <ErrorMessage name="priority" component="div"/>
-      </label>
+      </Label>
 
       <button type="submit">Add Event</button>
-      </Form>
+      </StyledForm>
     </Formik>
+    </Section>
   )
 }
 export default AddEvent;
