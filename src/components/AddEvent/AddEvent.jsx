@@ -1,12 +1,12 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { createEvent } from '../../redux/eventsOperations';
-import { Section, Title, StyledForm, Label, StyledField } from './AddEvent.styled';
+import { Section, Title, StyledForm, Label, StyledField, StyledError, Button } from './AddEvent.styled';
 
-const format = '[A-Za-zА-Яа-яЁёІіЇїЄє/s]+';
+const format = /^[A-Za-zА-Яа-яЁёІіЇїЄє '-]+$/;
 
 const schema = yup.object({
   name: yup.string().matches(format, 'Only letters are allowed').min(3, 'Title should not be shorter than 3 characters').max(25, 'Title should not be longer than 25 characters').required('Please type a title'),
@@ -51,22 +51,29 @@ return (
   initialValues={initialValues} 
   validationSchema={schema}
   onSubmit={handleSubmit}>
+
+{({ errors, touched, isValid, isSubmitting }) => (
     <StyledForm autoComplete="off">
       <Label htmlFor="name"><span>Title</span>
       <StyledField
         type="text"
         name="name" 
         placeholder="Title"
+        error={errors.name}
+        touched={touched.name}
       />
-      <ErrorMessage name="name" component="div"/>
+      <StyledError name="name" component="div"/>
       </Label>
 
       <Label htmlFor="description"><span>Description</span>
       <StyledField as="textarea"
         name="description" 
         placeholder="Description"
+        rows={5}
+        error={errors.description}
+        touched={touched.description}
       />
-      <ErrorMessage name="description" component="div"/>
+      <StyledError name="description" component="div"/>
       </Label>
 
       <Label htmlFor="date"><span>Select date</span>
@@ -74,16 +81,20 @@ return (
         type="date"
         name="date" 
         placeholder="select date"
+        error={errors.date}
+        touched={touched.date}
       />
-      <ErrorMessage name="date" component="div"/>
+      <StyledError name="date" component="div"/>
       </Label>
 
       <Label htmlFor="time"><span>Select time</span>
       <StyledField
         type="time"
         name="time" 
+        error={errors.time}
+        touched={touched.time}
       />
-      <ErrorMessage name="time" component="div"/>
+      <StyledError name="time" component="div"/>
       </Label>
   
       <Label htmlFor="place"><span>Location</span>
@@ -91,12 +102,19 @@ return (
         type="text"
         name="place" 
         placeholder="Location"
+        error={errors.place}
+        touched={touched.place}
       />
-      <ErrorMessage name="place" component="div"/>
+      <StyledError name="place" component="div"/>
       </Label>
 
       <Label htmlFor="category"><span>Category</span>
-      <StyledField as="select" name="category">
+      <StyledField 
+      as="select" 
+      name="category"
+      error={errors.category}
+      touched={touched.category}
+      >
       <option value="DEFAULT" disabled>Choose a category</option>
         <option value="art">Art</option>
         <option value="music">Music</option>
@@ -106,7 +124,7 @@ return (
         <option value="party">Party</option>
         <option value="sport">Sport</option> 
       </StyledField>
-      <ErrorMessage name="category" component="div"/>
+      <StyledError name="category" component="div"/>
       </Label>
 
      <Label htmlFor="image"><span>Add picture</span>
@@ -117,21 +135,27 @@ return (
         placeholder="Add picture"
         accept="image/png, image/gif, image/jpeg, image/jpg"
       />
-      <ErrorMessage name="image" component="div"/>
+      <StyledError name="image" component="div"/>
       </Label>
 
       <Label htmlFor="priority"><span>Priority</span>
-      <StyledField as="select" name="priority">
+      <StyledField 
+      as="select" 
+      name="priority"
+      error={errors.priority}
+      touched={touched.priority}
+      >
       <option value="DEFAULT" disabled>Choose a priority</option>
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </StyledField>
-      <ErrorMessage name="priority" component="div"/>
+      <StyledError name="priority" component="div"/>
       </Label>
 
-      <button type="submit">Add Event</button>
+      <Button type="submit" disabled={!isValid || isSubmitting || (Object.keys(touched).length === 0 && touched.constructor === Object)}>Add Event</Button>
       </StyledForm>
+)}
     </Formik>
     </Section>
   )

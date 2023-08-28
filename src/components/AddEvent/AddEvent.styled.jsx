@@ -1,5 +1,5 @@
 import styled from "@emotion/styled/macro";
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
 
 
 export const Section = styled.section`
@@ -69,10 +69,11 @@ export const StyledForm = styled(Form)`
     justify-content: center;
     padding: 40px 24px;
     width: 688px;
-
+  
     & > :nth-of-type(2) {
+      grid-column-start: 1;  
       grid-row: span 2;
-      grid-column-start: 1;
+      
     }
 
     & > :nth-of-type(5) {
@@ -227,18 +228,50 @@ export const Label = styled.label`
 `;
 
 export const StyledField = styled(Field)`
-  margin-bottom: 4px;
-  padding: 16px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--dividerColor);
+   padding: 16px 12px;
+  height: 100%;
   font-family: poppins;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: var(--textColor);
+  border-radius: 8px;
   outline: none;
+  border: 1px solid ${({ touched, error }) => 
+    touched && error 
+    ? 'var(--highColor)'
+    : 'var(--dividerColor)'};
+    margin-bottom: ${({ touched, error }) => 
+    touched && error 
+    ? '4px'
+    : '20px'};
+
+  &::placeholder {
+    font-family: poppins;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--dividerColor);
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid ${({ touched, error }) => 
+    touched && error 
+    ? 'var(--highColor)'
+    : 'var(--accentColor)'};
+  }
 `
 
+export const StyledError = styled(ErrorMessage)`
+  font-family: poppins;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--highColor);
+  text-align: right;
+
+`
 export const Button = styled.button`
   display: block;
   text-align: center;
